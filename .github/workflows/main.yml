@@ -11,6 +11,8 @@ jobs:
     env:
       tf_actions_working_dir: "terraform"
     defaults:
+      run:
+        working-directory: ${{ env.tf_actions_working_dir }}
     steps:
       - name: Check Out
         uses: actions/checkout@v4
@@ -20,12 +22,10 @@ jobs:
           cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}
           terraform_version: 1.9.2
       - run: terraform init
-      - run: pwd
-      - run: ls
       - name: 🏗️ Terraform Apply
         run: |
           cd terraform
-          terraform apply -no-color
+          terraform plan -no-color
       - run: echo ${{ steps.plan.outputs.stdout }}
       - run: echo ${{ steps.plan.outputs.stderr }}
       - run: echo ${{ steps.plan.outputs.exitcode }}
