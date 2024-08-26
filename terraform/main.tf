@@ -1,11 +1,4 @@
 terraform {
-  cloud {
-    organization = "blackbelt_init"
-
-    workspaces {
-      name = "SSG-S3"
-    }
-  }
 
   required_providers {
     aws = {
@@ -18,5 +11,5 @@ terraform {
 }
 
 provider "aws" {
-  region = "us-west-2"
+  region = "us-east-2"
 }
