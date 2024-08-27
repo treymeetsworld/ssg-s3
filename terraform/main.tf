@@ -1,4 +1,11 @@
 terraform {
+  cloud {
+    organization = "blkblt"
+
+    workspaces {
+      name = "ssg-s3"
+    }
+  }
 
   required_providers {
     aws = {
