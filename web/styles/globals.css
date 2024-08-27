@@ -31,3 +31,21 @@ body {
     text-wrap: balance;
   }
 }
+a {
+  color: #fff;
+  text-decoration: none;
+}
+
+a:hover {
+  color: rgb(246, 246, 246);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+a:visited {
+  color: #6f42c1;
+}
+
+a:active {
+  color: #ff5722;
+}
