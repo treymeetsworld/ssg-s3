@@ -9,7 +9,6 @@ export default function Home() {
                     <a>BLK-BLT</a>
                 </h1>
                 <nav className="flex space-x-8">
-
                     <a href="#" className="hover:text-gray-400">Home</a>
                     <a href="#" className="hover:text-gray-400">About</a>
                     <a href="#" className="hover:text-gray-400">Gallery</a>
