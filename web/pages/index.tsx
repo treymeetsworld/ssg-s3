@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 export default function Home() {
     return (
@@ -20,9 +21,9 @@ export default function Home() {
                         <a>STOREFRONT</a>
                     </h2>
                     <nav className="flex space-x-8">
-                        <a className="">Products</a>
-                        <a className="">Features</a>
-                        <a className="">Cart</a>
+                        <Link href="/ProductPage">Products</Link>
+                        <Link href="/ArtistsPage">Artists</Link>
+                        <Link href="/Cart">Cart</Link>
                     </nav>
                 </div>
             </header>
