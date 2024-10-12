@@ -11,9 +11,15 @@ export default function Home() {
             {/* Navbar */}
             <Navbar />
 
-            <div className="nav-bottom absolute top-20 w-[95%] h-[1px] bg-red-100 mx-auto"></div>
             {/* Main Content */}
             <main className="text-center px-4">
+                <div className="text-white text-4xl font-bold mt-20">
+                    Welcome to the Storefront!
+                </div>
+                <div className="text-white text-lg mt-4">
+                    <p>Explore our products and artists</p>
+                    <p>by clicking on the links in the navbar</p>
+                </div>
             </main>
         </div>
     );

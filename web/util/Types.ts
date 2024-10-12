@@ -6,3 +6,10 @@ export type ProductType = {
     imageUrl: string;
     quantity: number;
 };
+
+export type ArtistType = {
+    id: number;
+    name: string;
+    image: string;
+    details: string;
+};

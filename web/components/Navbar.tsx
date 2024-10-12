@@ -6,7 +6,7 @@ const Navbar: React.FC = () => {
     return (
         <header className="absolute top-0 w-full pt-6 text-white">
             <div className="w-[95%] mx-auto flex justify-between items-center">
-                <div className="relative">
+                <div className="relative w-72">
                     <input
                         type="text"
                         className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm bg-transparent text-white placeholder-white focus:outline-none focus:ring-2 focus:ring-blue-700"
@@ -22,6 +22,7 @@ const Navbar: React.FC = () => {
                     <Link href="/cart">Cart</Link>
                 </nav>
             </div>
+            {/*<div className=" absolute top-20 w-[95%] h-[1px] bg-red-100 mx-auto"></div>*/}
         </header>
     );
 };

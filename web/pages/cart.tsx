@@ -28,6 +28,7 @@ const Cart = ({}) => {
             return;
         }
         alert(`Purchasing ${cartItems.length} items for $${total}`);
+        setCartItems([]);
     };
 
     const calculateTotal = () => {
@@ -46,8 +47,6 @@ const Cart = ({}) => {
 
                 {/* Navbar */}
                 <Navbar/>
-
-                <div className="nav-bottom absolute top-20 w-[95%] h-[1px] bg-red-100 mx-auto"></div>
 
                 {/* Main Content */}
                 <main className="flex items-start justify-center w-full h-full p-10 space-x-8">
@@ -97,79 +96,73 @@ const Cart = ({}) => {
             <div className="nav-bottom absolute top-20 w-[95%] h-[1px] bg-red-100 mx-auto"></div>
 
             {/* Main Content */}
-            <main className="container mx-auto p-6">
-                <h1 className="text-3xl font-bold text-center mb-8 text-white">Shopping Cart</h1>
-
-                {/* Grid Layout for Cart Items and Order Summary */}
-                <div
-                    className="grid grid-cols-1 lg:grid-cols-3 gap-8 backdrop-blur-md bg-white/30 border border-white/50 rounded-lg shadow-lg p-8">
-
-                    {/* Cart Items - Takes 2/3 of the page */}
-                    <div className="lg:col-span-2">
-                        {cartItems.map((product) => (
-                            <div key={product.id}
-                                 className="flex justify-between items-center bg-white bg-opacity-10 rounded-lg shadow-md p-4 mb-4">
-                                {/* Product Image and Info */}
-                                <div className="flex items-center">
-                                    <img src={product.imageUrl} alt={product.name}
-                                         className="w-20 h-20 object-cover rounded-lg mr-4"/>
-                                    <div>
-                                        <h2 className="text-lg font-bold text-black">{product.name}</h2>
-                                        <p className="text-white">${product.price.toFixed(2)}</p>
-                                    </div>
+            <main className="flex items-start justify-center w-full h-full p-10 space-x-8">
+                {/* Cart Items Section - 2/3 of the page */}
+                <div className="w-2/3 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg p-6 shadow-lg">
+                    <p className="text-xl font-semibold">Shopping Cart Items</p>
+                    {cartItems.map((product) => (
+                        <div key={product.id}
+                             className="flex justify-between items-center bg-white bg-opacity-10 rounded-lg shadow-md p-4 mb-1">
+                            {/* Product Image and Info */}
+                            <div className="flex items-center">
+                                <img src={product.imageUrl} alt={product.name}
+                                     className="w-20 h-20 object-cover rounded-lg mr-4"/>
+                                <div>
+                                    <h2 className="text-lg font-bold text-black">{product.name}</h2>
+                                    <p className="text-white">${product.price.toFixed(2)}</p>
                                 </div>
+                            </div>
 
-                                {/* Quantity Controls */}
-                                <div className="flex items-center space-x-2">
-                                    <button
-                                        onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)}
-                                        disabled={product.quantity === 1}
-                                        className="bg-gray-200 text-gray-700 p-1 rounded hover:bg-gray-300"
-                                    >
-                                        -
-                                    </button>
-                                    <p className="text-lg">{product.quantity}</p>
-                                    <button
-                                        onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)}
-                                        className="bg-gray-200 text-gray-700 p-1 rounded hover:bg-gray-300"
-                                    >
-                                        +
-                                    </button>
-                                </div>
-
-                                {/* Remove Button */}
+                            {/* Quantity Controls */}
+                            <div className="flex items-center space-x-2">
                                 <button
-                                    onClick={() => handleRemoveItem(product.id)}
-                                    className="text-red-500 hover:text-red-700 font-semibold"
+                                    onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)}
+                                    disabled={product.quantity === 1}
+                                    className="bg-gray-200 text-gray-700 p-1 rounded hover:bg-gray-300"
                                 >
-                                    Remove
+                                    -
+                                </button>
+                                <p className="text-lg">{product.quantity}</p>
+                                <button
+                                    onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)}
+                                    className="bg-gray-200 text-gray-700 p-1 rounded hover:bg-gray-300"
+                                >
+                                    +
                                 </button>
                             </div>
-                        ))}
-                    </div>
 
-                    {/* Order Summary - Takes 1/3 of the page */}
-                    <div className="bg-white bg-opacity-10 rounded-lg shadow-md p-6">
-                        <p className="text-xl font-semibold">Cart Total</p>
-                        <div className="flex justify-between items-center mb-2">
-                            <p className="text-white">Subtotal</p>
-                            <p className="text-white">${subtotal}</p>
+                            {/* Remove Button */}
+                            <button
+                                onClick={() => handleRemoveItem(product.id)}
+                                className="text-red-500 hover:text-red-700 font-semibold"
+                            >
+                                Remove
+                            </button>
                         </div>
-                        <div className="flex justify-between items-center mb-2">
-                            <p className="text-white">Tax (10%)</p>
-                            <p className="text-white">${tax}</p>
-                        </div>
-                        <div className="flex justify-between items-center font-bold">
-                            <p className="text-white">Total</p>
-                            <p className="text-white">${total}</p>
-                        </div>
-                        <button
-                            onClick={() => handleCheckout(cartItems)}
-                            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all"
-                        >
-                            Checkout
-                        </button>
+                    ))}
+                </div>
+
+                {/* Cart Total Section - 1/3 of the page */}
+                <div className="w-1/3 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg p-6 shadow-lg">
+                    <p className="text-xl font-semibold">Cart Total</p>
+                    <div className="flex justify-between items-center mb-2">
+                        <p className="text-white">Subtotal</p>
+                        <p className="text-white">${subtotal}</p>
                     </div>
+                    <div className="flex justify-between items-center mb-2">
+                        <p className="text-white">Tax (10%)</p>
+                        <p className="text-white">${tax}</p>
+                    </div>
+                    <div className="flex justify-between items-center font-bold">
+                        <p className="text-white">Total</p>
+                        <p className="text-white">${total}</p>
+                    </div>
+                    <button
+                        onClick={() => handleCheckout(cartItems)}
+                        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all"
+                    >
+                        Checkout
+                    </button>
                 </div>
             </main>
         </div>
