@@ -5,7 +5,7 @@ import {ArtistType} from "@/util/Types";
 
 const ArtistsPage = () => {
 
-    const temArtists = [
+    const artists = [
         { id: 1, name: 'Artist 1', image: 'https://via.placeholder.com/100', details: 'Details about Artist 1' },
         { id: 2, name: 'Artist 2', image: 'https://via.placeholder.com/100', details: 'Details about Artist 2' },
         { id: 3, name: 'Artist 3', image: 'https://via.placeholder.com/100', details: 'Details about Artist 3' },
@@ -21,8 +21,7 @@ const ArtistsPage = () => {
 
     const [selectedArtist, setSelectedArtist] = useState<ArtistType | null>(null);
     const [currentPage, setCurrentPage] = useState(1);
-    const [artists, setArtists] = useState(temArtists);
-    const itemsPerPage = 5;
+    const itemsPerPage = 6;
 
     const handlePageChange = (pageNumber: React.SetStateAction<number>) => {
         setCurrentPage(pageNumber);
@@ -57,7 +56,7 @@ const ArtistsPage = () => {
                     ))}
                     </div>
                     {/* Pagination Controls */}
-                    <div className="flex justify-center mt-4">
+                    <div className="flex justify-center">
                         {Array.from({length: totalPages}, (_, index) => (
                             <button
                                 key={index}

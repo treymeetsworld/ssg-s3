@@ -27,8 +27,6 @@ const ProductPage = () => {
                 {/* Navbar */}
                 <Navbar />
 
-                <div className="nav-bottom absolute top-20 w-[95%] h-[1px] bg-red-100 mx-auto"></div>
-
                 {/* Main Content */}
                 <main className="flex items-center justify-center w-full h-full">
                     <div className="text-center">
@@ -47,8 +45,6 @@ const ProductPage = () => {
 
             {/* Navbar */}
             <Navbar />
-
-            <div className="nav-bottom absolute top-20 w-[95%] h-[1px] bg-red-100 mx-auto"></div>
 
             {/* Main Content */}
             <main className="container mx-auto p-6">

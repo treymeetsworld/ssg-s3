@@ -93,8 +93,6 @@ const Cart = ({}) => {
             {/* Navbar */}
             <Navbar/>
 
-            <div className="nav-bottom absolute top-20 w-[95%] h-[1px] bg-red-100 mx-auto"></div>
-
             {/* Main Content */}
             <main className="flex items-start justify-center w-full h-full p-10 space-x-8">
                 {/* Cart Items Section - 2/3 of the page */}
