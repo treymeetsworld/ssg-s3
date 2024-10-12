@@ -86,28 +86,28 @@ const Cart = ({}) => {
     }
 
     return (
-        <div className="min-h-screen flex flex-col items-center justify-center relative">
+        <div className="min-h-screen flex flex-col relative overflow-hidden">
             {/* Grainy Gradient Background */}
-            <div className="bg-gradient"></div>
+            <div className="bg-gradient absolute inset-0"></div>
 
             {/* Navbar */}
             <Navbar/>
 
             {/* Main Content */}
-            <main className="flex items-start justify-center w-full h-full p-10 space-x-8">
+            <main className="flex flex-1 w-full p-10 pb-0 mt-10">
                 {/* Cart Items Section - 2/3 of the page */}
-                <div className="w-2/3 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg p-6 shadow-lg">
-                    <p className="text-xl font-semibold">Shopping Cart Items</p>
+                <div className="w-2/3 bg-black bg-opacity-30 backdrop-blur-lg p-6 shadow-lg">
+                    <h2 className="text-xl font-bold m-4">CART</h2>
                     {cartItems.map((product) => (
                         <div key={product.id}
-                             className="flex justify-between items-center bg-white bg-opacity-10 rounded-lg shadow-md p-4 mb-1">
+                             className="flex justify-between items-center bg-black bg-opacity-10 rounded-lg shadow-md p-4 mb-1">
                             {/* Product Image and Info */}
                             <div className="flex items-center">
                                 <img src={product.imageUrl} alt={product.name}
                                      className="w-20 h-20 object-cover rounded-lg mr-4"/>
                                 <div>
-                                    <h2 className="text-lg font-bold text-black">{product.name}</h2>
-                                    <p className="text-white">${product.price.toFixed(2)}</p>
+                                    <p className="text-lg font-bold text-white">{product.name}</p>
+                                    <p className="text-white font-bold">${product.price.toFixed(2)}</p>
                                 </div>
                             </div>
 
@@ -116,14 +116,14 @@ const Cart = ({}) => {
                                 <button
                                     onClick={() => handleUpdateQuantity(product.id, product.quantity - 1)}
                                     disabled={product.quantity === 1}
-                                    className="bg-gray-200 text-gray-700 p-1 rounded hover:bg-gray-300"
+                                    className="bg-white text-gray-700 p-1 rounded hover:bg-gray-300"
                                 >
                                     -
                                 </button>
                                 <p className="text-lg">{product.quantity}</p>
                                 <button
                                     onClick={() => handleUpdateQuantity(product.id, product.quantity + 1)}
-                                    className="bg-gray-200 text-gray-700 p-1 rounded hover:bg-gray-300"
+                                    className="bg-white text-gray-700 p-1 rounded hover:bg-gray-300"
                                 >
                                     +
                                 </button>
@@ -141,23 +141,23 @@ const Cart = ({}) => {
                 </div>
 
                 {/* Cart Total Section - 1/3 of the page */}
-                <div className="w-1/3 bg-white bg-opacity-10 backdrop-blur-lg rounded-lg p-6 shadow-lg">
-                    <p className="text-xl font-semibold">Cart Total</p>
-                    <div className="flex justify-between items-center mb-2">
+                <div className="w-1/3 h-80 bg-black bg-opacity-30 backdrop-blur-lg p-6 shadow-lg flex flex-col">
+                    <p className="text-xl font-semibold flex-grow m-4">TOTAL</p>
+                    <div className="flex justify-between items-center mb-2 flex-grow">
                         <p className="text-white">Subtotal</p>
                         <p className="text-white">${subtotal}</p>
                     </div>
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="flex justify-between items-center mb-2 flex-grow">
                         <p className="text-white">Tax (10%)</p>
                         <p className="text-white">${tax}</p>
                     </div>
-                    <div className="flex justify-between items-center font-bold">
+                    <div className="flex justify-between items-center font-bold flex-grow">
                         <p className="text-white">Total</p>
                         <p className="text-white">${total}</p>
                     </div>
                     <button
                         onClick={() => handleCheckout(cartItems)}
-                        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all"
+                        className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-all flex-grow mt-5"
                     >
                         Checkout
                     </button>

@@ -41,13 +41,13 @@ const ArtistsPage = () => {
             <Navbar />
 
             {/* Main Content */}
-            <main className="flex flex-1 w-full mt-20">
+            <main className="flex flex-1 w-full mt-20 pl-10 pr-10">
                 {/* Sidebar - 10% of the page */}
-                <div className="w-3/12 bg-black bg-opacity-30 backdrop-blur-lg shadow-lg flex flex-col">
-                    <div className="flex-grow">
+                <div className="w-3/12 bg-black bg-opacity-20 backdrop-blur-lg shadow-lg flex flex-col">
+                    <div className="flex-grow bg-black bg-opacity-20 backdrop-blur-lg shadow-lg">
                     {currentArtists.map((artist) => (
                         <div key={artist.id}
-                             className="flex items-center bg-black bg-opacity-10 shadow-md p-4 cursor-pointer"
+                             className="flex items-center bg-black bg-opacity-30 shadow-md p-4 cursor-pointer"
                              onClick={() => setSelectedArtist(artist)}>
                             <img src={artist.image} alt={artist.name}
                                  className="h-full w-auto object-cover mr-4"/>
@@ -56,7 +56,7 @@ const ArtistsPage = () => {
                     ))}
                     </div>
                     {/* Pagination Controls */}
-                    <div className="flex justify-center">
+                    <div className="flex justify-center bg-black bg-opacity-30 shadow-md">
                         {Array.from({length: totalPages}, (_, index) => (
                             <button
                                 key={index}
@@ -70,7 +70,7 @@ const ArtistsPage = () => {
                 </div>
 
                 {/* Details Section - 90% of the page */}
-                <div className="flex-1 bg-black bg-opacity-20 backdrop-blur-lg p-6 shadow-lg">
+                <div className="flex-1 bg-black bg-opacity-30 backdrop-blur-lg p-6 shadow-lg">
                     {selectedArtist ? (
                         <div>
                             <h1 className="text-3xl font-bold text-white">{selectedArtist.name}</h1>
